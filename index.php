@@ -35,17 +35,17 @@
         ?>
 
         <section class="experience">
-            <h2>Expériences</h2>
+            <h2>Expériences</h2><br>
             <?php
             if (count($experiences) > 0) {
                 foreach ($experiences as $row) {
                     $date_debut = new DateTime($row["date_debut"]);
                     $date_fin = new DateTime($row["date_fin"]);
                     echo "<h3>" . htmlspecialchars($row["Entreprise"]) . " - " . htmlspecialchars($row["poste"]) . " (" . $date_debut->format('d/m/Y') . " - " . $date_fin->format('d/m/Y') . ")</h3>";
-                    echo "<p>" . nl2br(htmlspecialchars($row["description"])) . "</p>";
+                    echo "<p>" . nl2br(htmlspecialchars($row["description"])) . "</p></br>";
                 }
             } else {
-                echo "<p>Aucune expérience trouvée.</p>";
+                echo "<p>Aucune expérience trouvée.</p></br>";
             }
             ?>
         </section>
@@ -62,17 +62,17 @@
         ?>
 
         <section class="education">
-            <h2>Formations</h2>
+            <h2>Formations</h2><br>
             <?php
             if (count($educations) > 0) {
                 foreach ($educations as $row) {
                     $date_debut = new DateTime($row["date_debut"]);
                     $date_fin = new DateTime($row["date_fin"]);
                     echo "<h3>" . htmlspecialchars($row["diplome"]) . " (" . $date_debut->format('d/m/Y') . " - " . $date_fin->format('d/m/Y') . ")</h3>";
-                    echo "<p>" . nl2br(htmlspecialchars($row["description"])) . "</p>";
+                    echo "<p>" . nl2br(htmlspecialchars($row["description"])) . "</p></br>";
                 }
             } else {
-                echo "<p>Aucune éducation trouvée.</p>";
+                echo "<p>Aucune éducation trouvée.</p></br>";
             }
             ?>
         </section>
@@ -89,7 +89,7 @@
         ?>
 
         <section class="skills">
-            <h2>Compétences</h2>
+            <h2>Compétences</h2><br>
             <ul>
                 <?php
                 if (count($skills) > 0) {
@@ -97,7 +97,7 @@
                         echo "<li>" . htmlspecialchars($row["skill"]) . " (Niveau: " . htmlspecialchars($row["level"]) . ")</li>";
                     }
                 } else {
-                    echo "<li>Aucune compétence trouvée.</li>";
+                    echo "<li>Aucune compétence trouvée.</li></br>";
                 }
                 ?>
             </ul>

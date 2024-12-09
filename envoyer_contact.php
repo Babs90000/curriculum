@@ -1,55 +1,58 @@
 <?php
 require './vendor/autoload.php';
 
-use Mailgun\Mailgun;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    $apiKey = getenv('MAILGUN_API_KEY');
-    $domain = getenv('MAILGUN_DOMAIN');
-    $mgClient = Mailgun::create($apiKey);
-
     $attachment = $_FILES['attachment'];
 
+    $mail = new PHPMailer(true);
+
     try {
-        // Préparer les données de l'e-mail
-        $emailData = [
-            'from'    => 'no-reply@' . $domain,
-            'to'      => 'b.camara.diaby@outlook.com',
-            'subject' => "Ton profil intéresse " . $name,
-            'text'    => "Nom: " . $name . "\nEmail: " . $email . "\nMessage: \n" . $message,
-        ];
+        // Configuration du serveur SMTP
+        $mail->isSMTP();
+        $mail->Host = getenv('MAILERTOGO_SMTP_HOST'); // Adresse du serveur SMTP
+        $mail->SMTPAuth = true;
+        $mail->Username = getenv('MAILERTOGO_SMTP_USER'); // Nom d'utilisateur SMTP
+        $mail->Password = getenv('MAILERTOGO_SMTP_PASS'); // Mot de passe SMTP
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Destinataires
+        $mail->setFrom('no-reply@votre-domaine.com', 'Votre Nom');
+        $mail->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
 
         // Ajouter la pièce jointe si elle existe
         if ($attachment['error'] == UPLOAD_ERR_OK) {
-            $emailData['attachment'] = [
-                [
-                    'filePath' => $attachment['tmp_name'],
-                    'filename' => $attachment['name']
-                ]
-            ];
+            $mail->addAttachment($attachment['tmp_name'], $attachment['name']);
         }
 
-        // Envoyer l'e-mail au destinataire principal
-        $mgClient->messages()->send($domain, $emailData);
+        // Contenu de l'e-mail
+        $mail->isHTML(false);
+        $mail->Subject = "Ton profil intéresse " . $name;
+        $mail->Body    = "Nom: " . $name . "\nEmail: " . $email . "\nMessage: \n" . $message;
+
+        // Envoyer l'e-mail
+        $mail->send();
 
         // Envoyer l'e-mail de confirmation à l'utilisateur
-        $mgClient->messages()->send($domain, [
-            'from'    => 'no-reply@' . $domain,
-            'to'      => $email,
-            'subject' => "Confirmation de réception de votre message",
-            'text'    => "Bonjour " . $name . ",\n\nMerci de votre intérêt pour mon profil. J'ai bien reçu votre message et je reviendrais vers vous dès que possible.\n\nCordialement,\nBabou CAMARA-DIABY",
-        ]);
+        $mail->clearAddresses();
+        $mail->addAddress($email);
+        $mail->Subject = "Confirmation de réception de votre message";
+        $mail->Body    = "Bonjour " . $name . ",\n\nMerci de votre intérêt pour mon profil. J'ai bien reçu votre message et je reviendrais vers vous dès que possible.\n\nCordialement,\nBabou CAMARA-DIABY";
+        $mail->send();
 
         echo "Votre message a bien été envoyé.</br>";
     } catch (Exception $e) {
-        echo "Votre message n'a pas été envoyé: {$e->getMessage()}</br>";
+        echo "Votre message n'a pas été envoyé: {$mail->ErrorInfo}</br>";
     }
 
-    echo "Vous allez êtes redirigé à la page précédente dans 5 secondes...";
+    echo "Vous allez être redirigé à la page précédente dans 5 secondes...";
     header("refresh:5;url=" . $_SERVER['HTTP_REFERER']);
     exit();
 }
