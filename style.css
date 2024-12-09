@@ -1,0 +1,172 @@
+/* Réinitialiser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* fin réinitialiser */
+
+header, footer {
+    background-color: #69afe0;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+.container {
+    max-width: 800px; /* Limite la largeur maximale */
+    margin: 20px auto; /* Centre le conteneur */
+    overflow: hidden;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container_accueil {
+    max-width: 800px; /* Limite la largeur maximale */
+    margin: 20px auto 170px auto ; /* Centre le conteneur */
+    overflow: hidden;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container_login {
+    max-width: 600px; /* Limite la largeur maximale */
+    margin: 20px auto; /* Centre le conteneur */
+    overflow: hidden;
+    background: rgb(207, 234, 253);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+header h1 {
+    color: white;
+}
+
+section {
+    background: rgb(207, 234, 253);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.section_adminetco {
+    background: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form input[type="file"] {
+    padding: 3px;
+}
+
+form input[type="submit"], .btn-retour, form button {
+    margin-top: 20px;
+    background-color: #69afe0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover, .btn-retour:hover, form button:hover {
+    background-color: #5a9fd4;
+}
+
+.btn-retour {
+    display: block;
+    margin: 10px auto 20px auto;
+    width: 35%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #69afe0;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #69afe0;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
