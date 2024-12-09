@@ -18,16 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-
-        // Informations d'identification ENV
-        $mail->Host = getenv("MAILERTOGO_SMTP_HOST", true);
-        $mail->Port = intval(getenv("MAILERTOGO_SMTP_PORT", true));
-        $mail->Username = getenv("MAILERTOGO_SMTP_USER", true);
-        $mail->Password = getenv("MAILERTOGO_SMTP_PASS", true);
-        $mailertogo_domain = getenv("MAILERTOGO_DOMAIN", true);
+        $mail->Host = 'smtp.office365.com'; // Adresse du serveur SMTP d'Outlook
+        $mail->Port = 587; // Port SMTP pour TLS
+        $mail->Username = 'b.camara.diaby@outlook.com'; // Votre adresse e-mail Outlook
+        $mail->Password = 'Allo94370'; // Votre mot de passe Outlook
 
         // En-têtes de l'e-mail
-        $mail->setFrom("mailer@{$mailertogo_domain}", "Votre Nom");
+        $mail->setFrom('b.camara.diaby@outlook.com', 'Babou CAMARA-DIABY');
         $mail->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
 
         // Ajouter la pièce jointe si elle existe
