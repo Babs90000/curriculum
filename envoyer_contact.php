@@ -16,12 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Configuration du serveur SMTP
         $phpmailer->isSMTP();
-        $phpmailer->Host = 'smtp.office365.com'; // Adresse du serveur SMTP de Mailtrap
+        $phpmailer->Host = 'smtp.gmail.com'; // Adresse du serveur SMTP de Gmail
         $phpmailer->SMTPAuth = true;
-        $phpmailer->Username = 'b.camara.diaby@outlook.com'; // Votre nom d'utilisateur Mailtrap
-        $phpmailer->Password = 'Allo94370'; // Votre mot de passe Mailtrap
+        $phpmailer->Username = 'camara.enc@gmail.com'; // Votre adresse e-mail Gmail
+        $phpmailer->Password = 'xrkq tbyu auoe ngot'; // Votre mot de passe Gmail
         $phpmailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $phpmailer->Port = 587;
+
+        // Activer le débogage SMTP
+        $phpmailer->SMTPDebug = 2; // 0 = off (pour la production), 1 = messages client, 2 = messages client et serveur
+        $phpmailer->Debugoutput = 'html'; // Afficher les messages de débogage en HTML
 
         // En-têtes de l'e-mail
         $phpmailer->setFrom('b.camara.diaby@outlook.com', 'Babou-CAMARA-DIABY');
