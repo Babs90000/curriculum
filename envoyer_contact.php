@@ -23,9 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phpmailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $phpmailer->Port = 587;
 
-        // Activer le débogage SMTP
-        $phpmailer->SMTPDebug = 2; // 0 = off (pour la production), 1 = messages client, 2 = messages client et serveur
-        $phpmailer->Debugoutput = 'html'; // Afficher les messages de débogage en HTML
+
+        $phpmailer->CharSet = 'UTF-8';
 
         // En-têtes de l'e-mail
         $phpmailer->setFrom('b.camara.diaby@outlook.com', 'Babou-CAMARA-DIABY');
