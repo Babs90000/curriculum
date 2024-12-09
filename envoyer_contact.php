@@ -16,19 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Configuration du serveur SMTP
         $mail->isSMTP();
-        $mail->Host = getenv('MAILERTOGO_SMTP_HOST'); // Adresse du serveur SMTP
         $mail->SMTPAuth = true;
-        $mail->Username = getenv('MAILERTOGO_SMTP_USER'); // Nom d'utilisateur SMTP
-        $mail->Password = getenv('MAILERTOGO_SMTP_PASS'); // Mot de passe SMTP
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
 
-        // Activer le débogage SMTP
-        $mail->SMTPDebug = 2; // 0 = off (pour la production), 1 = messages client, 2 = messages client et serveur
-        $mail->Debugoutput = 'html'; // Afficher les messages de débogage en HTML
+        // Informations d'identification ENV
+        $mail->Host = getenv("MAILERTOGO_SMTP_HOST", true);
+        $mail->Port = intval(getenv("MAILERTOGO_SMTP_PORT", true));
+        $mail->Username = getenv("MAILERTOGO_SMTP_USER", true);
+        $mail->Password = getenv("MAILERTOGO_SMTP_PASS", true);
+        $mailertogo_domain = getenv("MAILERTOGO_DOMAIN", true);
 
-        // Destinataires
-        $mail->setFrom($mail->Username, 'b.camara.diaby@outlook.com'); // Utiliser l'adresse e-mail SMTP comme expéditeur
+        // En-têtes de l'e-mail
+        $mail->setFrom("mailer@{$mailertogo_domain}", "Votre Nom");
         $mail->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
 
         // Ajouter la pièce jointe si elle existe
