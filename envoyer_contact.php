@@ -23,8 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
+        // Activer le débogage SMTP
+        $mail->SMTPDebug = 2; // 0 = off (pour la production), 1 = messages client, 2 = messages client et serveur
+        $mail->Debugoutput = 'html'; // Afficher les messages de débogage en HTML
+
         // Destinataires
-        $mail->setFrom('no-reply@votre-domaine.com', 'Votre Nom');
+        $mail->setFrom($mail->Username, 'Votre Nom'); // Utiliser l'adresse e-mail SMTP comme expéditeur
         $mail->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
 
         // Ajouter la pièce jointe si elle existe
