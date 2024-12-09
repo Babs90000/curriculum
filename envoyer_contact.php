@@ -16,15 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Configuration du serveur SMTP
         $phpmailer->isSMTP();
-        $phpmailer->Host = 'sandbox.smtp.mailtrap.io'; // Adresse du serveur SMTP de Mailtrap
+        $phpmailer->Host = 'smtp.office365.com'; // Adresse du serveur SMTP de Mailtrap
         $phpmailer->SMTPAuth = true;
-        $phpmailer->Username = '42e27e6fee9041'; // Votre nom d'utilisateur Mailtrap
-        $phpmailer->Password = '76f234318a9081'; // Votre mot de passe Mailtrap
-        $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Port = 2525;
+        $phpmailer->Username = 'b.camara.diaby@outlook.com'; // Votre nom d'utilisateur Mailtrap
+        $phpmailer->Password = 'Allo94370'; // Votre mot de passe Mailtrap
+        $phpmailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $phpmailer->Port = 587;
 
         // En-têtes de l'e-mail
-        $phpmailer->setFrom('from@example.com', 'Babou-CAMARA-DIABY');
+        $phpmailer->setFrom('b.camara.diaby@outlook.com', 'Babou-CAMARA-DIABY');
         $phpmailer->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
 
         // Ajouter la pièce jointe si elle existe
