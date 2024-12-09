@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Debugoutput = 'html'; // Afficher les messages de débogage en HTML
 
         // Destinataires
-        $mail->setFrom($mail->Username, 'Votre Nom'); // Utiliser l'adresse e-mail SMTP comme expéditeur
+        $mail->setFrom($mail->Username, 'b.camara.diaby@outlook.com'); // Utiliser l'adresse e-mail SMTP comme expéditeur
         $mail->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
 
         // Ajouter la pièce jointe si elle existe
