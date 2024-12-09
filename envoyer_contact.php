@@ -1,5 +1,5 @@
 <?php
-require './vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -16,15 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Configuration du serveur SMTP
         $mail->isSMTP();
+        $mail->Host = 'sandbox.smtp.mailtrap.io'; // Adresse du serveur SMTP de Mailtrap
         $mail->SMTPAuth = true;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Host = 'smtp.office365.com'; // Adresse du serveur SMTP d'Outlook
-        $mail->Port = 587; // Port SMTP pour TLS
-        $mail->Username = 'b.camara.diaby@outlook.com'; // Votre adresse e-mail Outlook
-        $mail->Password = 'Allo94370'; // Votre mot de passe Outlook
+        $mail->Username = '42e27e6fee9041'; // Votre nom d'utilisateur Mailtrap
+        $mail->Password = '76f234318a9081'; // Votre mot de passe Mailtrap
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 2525;
 
         // En-têtes de l'e-mail
-        $mail->setFrom('b.camara.diaby@outlook.com', 'Babou CAMARA-DIABY');
+        $mail->setFrom('from@example.com', 'Babou-CAMARA-DIABY');
         $mail->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
 
         // Ajouter la pièce jointe si elle existe
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Contenu de l'e-mail
-        $mail->isHTML(false);
+        $mail->isHTML(false); // Envoyer l'e-mail en texte brut
         $mail->Subject = "Ton profil intéresse " . $name;
         $mail->Body    = "Nom: " . $name . "\nEmail: " . $email . "\nMessage: \n" . $message;
 
