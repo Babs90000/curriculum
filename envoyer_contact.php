@@ -23,12 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phpmailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $phpmailer->Port = 587;
 
+        // Désactiver le débogage SMTP
+        $phpmailer->SMTPDebug = 0; // 0 = off (pour la production), 1 = messages client, 2 = messages client et serveur
 
+        // Configurer l'encodage
         $phpmailer->CharSet = 'UTF-8';
 
         // En-têtes de l'e-mail
-        $phpmailer->setFrom('b.camara.diaby@outlook.com', 'Babou-CAMARA-DIABY');
+        $phpmailer->setFrom('camara.enc@gmail.com', 'Babou-CAMARA-DIABY'); // Utiliser votre adresse e-mail comme expéditeur
         $phpmailer->addAddress('b.camara.diaby@outlook.com'); // Ajouter un destinataire
+        $phpmailer->addReplyTo($email, $name); // Ajouter l'adresse e-mail de l'utilisateur comme adresse de réponse
 
         // Ajouter la pièce jointe si elle existe
         if ($attachment['error'] == UPLOAD_ERR_OK) {
