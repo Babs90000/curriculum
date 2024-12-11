@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
             <label for="attachment">Pièce jointe :</label>
-            <input type="file" class="form-control" id="attachment" name="attachment" accept=".heic,image/heic">
+            <input type="file" class="form-control" id="attachment" name="attachment" accept="">
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
