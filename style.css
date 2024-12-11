@@ -170,3 +170,9 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 600px) {
+    .mobile {
+        margin-bottom: 150px;
+    }
+}

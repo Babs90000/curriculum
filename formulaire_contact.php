@@ -11,7 +11,7 @@
     <header>
         <h1>Formulaire de contact</h1>
     </header>
-    <div class="container">
+    <div class="container mobile">
         <form action="envoyer_contact.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Nom :</label>
@@ -26,8 +26,8 @@
                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
             </div>
             <div class="form-group">
-                <label for="attachment">Pièce jointe :</label>
-                <input type="file" class="form-control" id="attachment" name="attachment">
+            <label for="attachment">Pièce jointe :</label>
+            <input type="file" class="form-control" id="attachment" name="attachment" accept=".heic,image/heic">
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>

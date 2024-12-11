@@ -16,8 +16,8 @@
     </header>
     <div class="container_accueil">
         <section class="profile">
-            <h2>Profil</h2>
-            <p>Passionné par le développement web j’ai quittémon ancien poste et le domaine de la financeafin d’entamer une reconversion professionnellecomme développeur web full stack.Je suis actuellement à la recherche d’un stageafin de gagner en expérience et apprendred’avantage dans le domaine de laprogrammation</p>
+            <h2>Profil</h2><br>
+            <p>Passionné par le développement web j’ai quitté mon ancien poste et le domaine de la financeafin d’entamer une reconversion professionnellecomme développeur web full stack.Je suis actuellement à la recherche d’un stageafin de gagner en expérience et apprendred’avantage dans le domaine de laprogrammation</p>
         </section>
 
         <?php
